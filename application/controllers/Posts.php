@@ -45,23 +45,17 @@
 
         public function createPosts() {
 
-            if($this->session->userdata('logged_in')) {
-                $this->load->view("templates/header.php");
-                $this->load->view("pages/create.php");
-                $this->load->view("templates/footer.php");
+            if(!$this->session->userdata('logged_in')){
+				redirect('users/login');
+			}
+            $this->load->view("templates/header.php");
+            $this->load->view("pages/create.php");
+            $this->load->view("templates/footer.php");
 
-                if($this->input->post('title') != null) {
-                    $this->Posts_model->create_post();
-                }
-            } else {
-                $data['title'] = 'To create post you should sign in';
-
-                $this->load->view('templates/header');
-				$this->load->view('users/login', $data);
-                $this->load->view('templates/footer');
-                
-
+            if($this->input->post('title') != null) {
+                $this->Posts_model->create_post();
             }
+            
             
         }
         public function edit($id)
