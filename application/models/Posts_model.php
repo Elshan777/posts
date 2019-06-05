@@ -13,10 +13,22 @@
         // get news by single category
         public function get_category($category = null)
         {
-            $this->db->order_by('blog.id', 'DESC');
-            $query = $this->db->get_where('blog', array('category' => $category));
-            return $query->result_array();
+            if ($category == 'popular') {
+                $this->db->order_by('blog.likes','DESC');
+                $query = $this->db->get('blog');
+                return $query->result_array();
+            } else {
+                $this->db->order_by('blog.id', 'DESC');
+                $query = $this->db->get_where('blog', array('category' => $category));
+                return $query->result_array();
+            }
         }
+        // orders by most liked and returns them
+        public function popular()
+        {
+            
+        }
+
         // get post for given id
         public function get_data($id)
         {

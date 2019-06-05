@@ -28,11 +28,11 @@
         </li>
       <?php endif; ?>
       <!--If admin is not looged in  -->
-      <?php if(!$this->session->userdata('logged_in')) : ?>
+      <!--<?php if(!$this->session->userdata('logged_in')) : ?>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url(); ?>users/login">Login</a>
         </li>
-      <?php endif; ?>
+      <?php endif; ?>-->
     </ul>
   </div>
 </nav>
@@ -40,6 +40,9 @@
   <ul class="nav">
     <li class="nav-item">
       <a class="nav-link " href="<?php echo base_url(); ?>posts/index">All</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " href="<?php echo base_url(); ?>posts/index/popular">Popular</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="<?php echo base_url(); ?>posts/index/Politics">Politics</a>
